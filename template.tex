@@ -34,7 +34,7 @@
 \renewcommand{\@biblabel}[1]{\quad#1.}
 \makeatother
 
-% Headrule, Footrule and page numbers
+% headrule, footrule and page numbers
 \usepackage{lastpage,fancyhdr,graphicx}
 \usepackage{epstopdf}
 \pagestyle{myheadings}
@@ -70,7 +70,7 @@
 % title goes here:
 \begin{flushleft}
 {\Large
-\textbf\newline{\LaTeX Template for compiled PDF.}
+\textbf\newline{\LaTeX Template for Manuscripts with Embedded Figures.}
 }
 \newline
 % authors go here:
@@ -94,23 +94,26 @@ Author 7\textsuperscript{1,*}
 \end{flushleft}
 
 \section*{Abstract}
-Fitting many figures into very tight manuscripts while keeping it pleasant to read is challenging. This \LaTeX template shows how to generate a compiled PDF with figures embedded into the text. Throughout the body of the text you will find different examples of how to embed figures or tables. This is supposed to give you a range of options from which you should choose the one best suited for your data. Check figure legends and text for more detailed explanations. Check out \cite{Schlegel2016} as example of use.
+Fitting multiple figures into very tight manuscripts while keeping it pleasant to read is challenging. Therefore figures are often simply attached to the very end of a manuscript. While being easy for the authors, this practice is really inconvenient for readers. This \LaTeX template shows how to generate a compiled PDF with figures embedded into the text. It provides several examples of how to embed figures or tables directly into the text. This is supposed to give you a range of options from which you should choose the one best suited for your data. Check out Schlegel et al., (2016) as example of use \cite{Schlegel2016}.
 
 % now start line numbers
 \linenumbers
 
 % the * after section prevents numbering
 \section*{Introduction}
-In the introduction you will see an example of text wrapping around the figure with a figure legend at the margin. This is done by combining the \verb!wrapfigure! with the \verb!marginnote! environment. Please note that in this case the figure (\verb!wrapfigure!) and %avoid blank space here 
-\marginpar{\vspace{.7cm} \color{Gray} % adjust vertical position relative to text with \vspace{}
-\textbf{Figure 1. Example of a margin caption.}
-\textbf{A}, Setting up your figure and legend like this looks fancy but requires a bit more work because you have to take care of positioning and figure numbers yourself. Important to note is that you can't use \textbackslash label and \textbackslash ref for margin captions - you will need to do this manually. 
+In the introduction you will see an example of text wrapping around the figure with a figure legend on the margin (Fig. \ref{fig1}). This is done by combining the \verb!wrapfigure! with % avoid blank space here 
+\marginpar{\vspace{.7cm} \color{Gray} % adjust vertical position relative to text with \vspace{} - note that you can enter negative numbers to move margin caption up
+\textbf{Figure \ref{fig1}. Example of a margin caption.} % note that \ref{fig1} refers to the embedded wrapfigure in the text
+\textbf{A}, Setting up your figure and legend like this looks fancy and does not disrupt the flow of the text. \textbf{B}, But it requires more manual adjustments (position, spacing, labeling) than if you used standard \LaTeX figure environments.
 }
-% the number in [] of wrapfigure is optional and gives the number of text lines that should be wrapped around the text. Adjust according to your figures height
 \begin{wrapfigure}[18]{l}{83mm}
+% the number in [] of wrapfigure is optional and gives the number of text lines that should be wrapped around the text. Adjust according to your figures height
 \includegraphics[width=83mm]{fig1.pdf}
+\captionsetup{labelformat=empty} % makes sure dummy caption is blank
+\caption{} % add empty dummy caption - otherwise \label won't work and figure numbering will not count up
+\label{fig1} % use \ref{fig1} to reference to this figure
 \end{wrapfigure} % avoid blank space here
-the figure legend (\verb!marginpar!) have to be separated as you can tell from the code. The \verb!wrapfigure! environment can be a bit tricky when it comes to text formatting. Thus some general hints: (a) try to avoid line breaks in the code as this may result in weird formatting around the figure, (b) the figure should not span across multiple headlines (sections) and (c) if you encounter problems with the line break right after the \verb!wrapfigure! try using \verb!\mbox{}! to prevent premature line breaks (\mbox{see example in code}). As stated in the figure legend (Fig. 1), the \verb!\label{}! and \verb!\ref{}! command won't work with this way to setup your figures. The reason is that \verb!\label{}! only works if there is a caption in the figure environment which we don't have in this case because we manually moved the caption to the margin.
+the \verb!marginnote! environment. Please note that in this case the figure (\verb!wrapfigure!) and the figure legend (\verb!marginpar!) have to be separated as you can tell from the code. The \verb!wrapfigure! environment can be a bit tricky when it comes to text formatting. Thus some general hints: (a) try to avoid line breaks in the code as this may result in weird formatting around the figure, (b) the figure should not span across multiple headlines (sections) and (c) if you encounter problems with the line break right after the \verb!wrapfigure! try using \verb!\mbox{}! to prevent premature line breaks (\mbox{see example in code}). As stated in the figure legend, setting up figures this way requires a bit more manual adjustments but it makes figures blend in nicely without interrupting flow of text.
 
 \section*{Materials and Methods}
 
@@ -151,10 +154,10 @@ $f(A_{ik},A_{jk}) = min(A_{ik},A_{jk}) - C_{1} max(A_{ik},A_{jk}) e^{-C_{2}min(A
 Figure \ref{fig2} is wrapped into a standard floating environment. That means that \LaTeX will determine the exact placement of the figure. Even though you can state preferences (see code) it can be tricky to get the right placement - especially when working on very tight manuscripts. If you want exact placement, add \verb!\usepackage{float}! to this file's header and use [H] in the figure environment.
 
 
-\begin{figure}[ht] %s tate preferences regarding figure placement here
+\begin{figure}[ht] %s state preferences regarding figure placement here
 
 % use to correct figure counter if necessary
-\renewcommand{\thefigure}{2}
+%\renewcommand{\thefigure}{2}
 
 \includegraphics[width=\textwidth]{fig2.pdf}
 
@@ -164,9 +167,8 @@ Figure \ref{fig2} is wrapped into a standard floating environment. That means th
 
 \end{figure}
 
-
 \subsection*{Page break in figures.}
-The standard floating figures in \LaTeX do not cope well with page breaks which can make it difficult to fit in large figures. One way to deal with this is to separate figure and caption but \verb!\caption{}! might still give troubles at page breaks. Figure 3 demonstrates a way to manually set up figure and caption and legend such that it continues onto the next page.
+The standard floating figures in \LaTeX do not cope well with page breaks which can make it difficult to fit in large figures. One way to deal with this is to separate figure and caption but \verb!\caption{}! might still give troubles at page breaks. Figure 3 demonstrates a way to manually set up figure and caption such that it continues onto the next page.
 \vspace{.5cm} % set vertical space between text and figure
 \begin{adjustwidth}{-2in}{0in}
 \begin{flushright}
