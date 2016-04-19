@@ -7,4 +7,4 @@ To use download **template.tex** and change to your needs. Additional files (fig
 You can run your own LaTeX compiler or use online services (e.g. [Overleaf](http://www.overleaf.com)).
 
 First page of compiled PDF:
-![First page](https://cloud.githubusercontent.com/assets/7161148/14605403/b7518660-0578-11e6-9e56-20211c56ee1e.PNG)
+![First page](https://cloud.githubusercontent.com/assets/7161148/14634271/7ff04c20-0621-11e6-8536-9d9d4f86d3ea.PNG)
