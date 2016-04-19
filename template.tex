@@ -94,26 +94,28 @@ Author 7\textsuperscript{1,*}
 \end{flushleft}
 
 \section*{Abstract}
-Fitting multiple figures into very tight manuscripts while keeping it pleasant to read is challenging. Therefore figures are often simply attached to the very end of a manuscript. While being easy for the authors, this practice is really inconvenient for readers. This \LaTeX template shows how to generate a compiled PDF with figures embedded into the text. It provides several examples of how to embed figures or tables directly into the text. This is supposed to give you a range of options from which you should choose the one best suited for your data. Check out Schlegel et al., (2016) as example of use \cite{Schlegel2016}.
+Fitting multiple figures into very tight manuscripts while keeping it pleasant to read is challenging. Therefore figures are often simply attached to the very end of a manuscript file. While easier for the authors, this practice is inconvenient for readers. This \LaTeX template shows how to generate a compiled PDF with figures embedded into the text. It provides several examples of how to embed figures or tables directly into the text thus giving you a range of options from which you should choose the one best suited for your manuscript. Check out Schlegel et al., (2016) as example of use \cite{Schlegel2016}.
 
 % now start line numbers
 \linenumbers
 
 % the * after section prevents numbering
 \section*{Introduction}
-In the introduction you will see an example of text wrapping around the figure with a figure legend on the margin (Fig. \ref{fig1}). This is done by combining the \verb!wrapfigure! with % avoid blank space here 
-\marginpar{\vspace{.7cm} \color{Gray} % adjust vertical position relative to text with \vspace{} - note that you can enter negative numbers to move margin caption up
-\textbf{Figure \ref{fig1}. Example of a margin caption.} % note that \ref{fig1} refers to the embedded wrapfigure in the text
-\textbf{A}, Setting up your figure and legend like this looks fancy and does not disrupt the flow of the text. \textbf{B}, But it requires more manual adjustments (position, spacing, labeling) than if you used standard \LaTeX figure environments.
+In the introduction you will see an example of text wrapping around the figure with a figure caption on the margin (Fig. \ref{fig1}). This is done by combining the \verb!wrapfigure! with % avoid blank space here 
+\marginpar{
+\vspace{.7cm} % adjust vertical position relative to text with \vspace{} - note that you can enter negative numbers to move margin caption up
+\color{Gray} % this gives caption a grey color to set it apart from text body
+\textbf{Figure \ref{fig1}. Example of a margin caption.} % note that \ref{fig1} refers to the corresponding wrapfigure
+Setting up your figure + caption like this looks fancy and does not disrupt the flow of the text. But it requires more manual adjustments (position, spacing, labeling) compared to using standard \LaTeX figure environments.
 }
-\begin{wrapfigure}[18]{l}{83mm}
+\begin{wrapfigure}[19]{l}{75mm}
 % the number in [] of wrapfigure is optional and gives the number of text lines that should be wrapped around the text. Adjust according to your figures height
-\includegraphics[width=83mm]{fig1.pdf}
+\includegraphics[width=75mm]{fig1.pdf}
 \captionsetup{labelformat=empty} % makes sure dummy caption is blank
-\caption{} % add empty dummy caption - otherwise \label won't work and figure numbering will not count up
+\caption{} % add dummy caption - otherwise \label won't work and figure numbering will not count up
 \label{fig1} % use \ref{fig1} to reference to this figure
 \end{wrapfigure} % avoid blank space here
-the \verb!marginnote! environment. Please note that in this case the figure (\verb!wrapfigure!) and the figure legend (\verb!marginpar!) have to be separated as you can tell from the code. The \verb!wrapfigure! environment can be a bit tricky when it comes to text formatting. Thus some general hints: (a) try to avoid line breaks in the code as this may result in weird formatting around the figure, (b) the figure should not span across multiple headlines (sections) and (c) if you encounter problems with the line break right after the \verb!wrapfigure! try using \verb!\mbox{}! to prevent premature line breaks (\mbox{see example in code}). As stated in the figure legend, setting up figures this way requires a bit more manual adjustments but it makes figures blend in nicely without interrupting flow of text.
+the \verb!marginnote! environment. Please note that in this case the figure (\verb!wrapfigure!) and the figure caption (\verb!marginpar!) have to be separated as you can tell from the code. The \verb!wrapfigure! environment can be a bit tricky when it comes to text formatting. Thus some general hints: (a) try to avoid line breaks in the code as this may result in weird formatting around the figure, (b) the figure should not span multiple headlines (sections) and (c) if you encounter problems with the line break right after the \verb!wrapfigure! try using \verb!\mbox{}! to prevent premature line breaks (\mbox{see example in code}). As stated in the figure caption, setting up figures this way requires a bit more manual adjustments but it makes figures blend in nicely without interrupting flow of text.
 
 \section*{Materials and Methods}
 
@@ -122,22 +124,22 @@ the \verb!marginnote! environment. Please note that in this case the figure (\ve
 In this section you will find an example of a table using the \verb!table! plus the \verb!adjustwidth! environment and should give you a minimal example for tables in \LaTeX (Table \ref{tab1}).
 
 \begin{table}[!ht]
-\begin{adjustwidth}{-2.25in}{0in} % comment out/remove adjustwidth environment if table fits in text column.
+\begin{adjustwidth}{-1.5in}{0in} % comment out/remove adjustwidth environment if table fits in text column.
 \centering
 \caption{{\bf Example Table.} This table demonstrates how to use the  adjustwidth environment if you need that tad bit of extra width for your figures or tables.}
-\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
-\multicolumn{4}{|l|}{\bf Heading 1} & \multicolumn{4}{|l|}{\bf Heading 2}\\ \hline
-cell 1 - row 1 & cell 2 - row 1 & cell 3 - row 1 & cell 4 - row 1 & cell 5 - row 1 & cell 6 - row 1 & cell 7 - row 1 & cell 8 - row 1\\ \hline
-cell 1 - row 2 & cell 2 - row 2 & cell 3 - row 2 & cell 4 - row 2 & cell 5 - row 2 & cell 6 - row 2 & cell 7 - row 2 & cell 8 - row 2\\ \hline
-cell 1 - row 3 & cell 2 - row 3 & cell 3 - row 3 & cell 4 - row 3 & cell 5 - row 3 & cell 6 - row 3 & cell 7 - row 3 & cell 8 - row 3\\ \hline
+\multicolumn{4}{|l|}{\bf Heading 1} & \multicolumn{3}{|l|}{\bf Heading 2}\\ \hline
+cell 1 - row 1 & cell 2 - row 1 & cell 3 - row 1 & cell 4 - row 1 & cell 5 - row 1 & cell 6 - row 1 & cell 7 - row 1 \\ \hline
+cell 1 - row 2 & cell 2 - row 2 & cell 3 - row 2 & cell 4 - row 2 & cell 5 - row 2 & cell 6 - row 2 & cell 7 - row 2 \\ \hline
+cell 1 - row 3 & cell 2 - row 3 & cell 3 - row 3 & cell 4 - row 3 & cell 5 - row 3 & cell 6 - row 3 & cell 7 - row 3 \\ \hline
 \end{tabular}
 \label{tab1}
 \end{adjustwidth}
 \end{table}
 
-\paragraph{Paragraph}
-Instead of adding more and more subsections you can use the \textbackslash paragraph command to give structure to your manuscript.
+\paragraph{Paragraph.}
+Instead of adding more and more subsections you can use the \verb!\paragraph{}! command to give structure to your manuscript.
 
 \subsection*{Formulas.}
 For mathematical formulas you should use the math environment. See this example:
@@ -151,7 +153,7 @@ $f(A_{ik},A_{jk}) = min(A_{ik},A_{jk}) - C_{1} max(A_{ik},A_{jk}) e^{-C_{2}min(A
 
 \section*{Results}
 \subsection*{Standard floating figures.}
-Figure \ref{fig2} is wrapped into a standard floating environment. That means that \LaTeX will determine the exact placement of the figure. Even though you can state preferences (see code) it can be tricky to get the right placement - especially when working on very tight manuscripts. If you want exact placement, add \verb!\usepackage{float}! to this file's header and use [H] in the figure environment.
+Figure \ref{fig2} is wrapped into a standard floating environment. That means that \LaTeX will determine the exact placement of the figure. Even though you can state preferences (see code) it can be tricky to get the right placement - especially when working on very tight manuscripts. If you want exact placement, add \verb!\usepackage{float}! to this file's header and use [H] in the figure environment's placement options.
 
 
 \begin{figure}[ht] %s state preferences regarding figure placement here
@@ -161,7 +163,7 @@ Figure \ref{fig2} is wrapped into a standard floating environment. That means th
 
 \includegraphics[width=\textwidth]{fig2.pdf}
 
-\caption{\color{Gray} \textbf{Example of a standard floating figure}. This figure is wrapped into the standard floating environment.}
+\caption{\color{Gray} \textbf{Example of a standard floating figure}. \textbf{A-F}, This figure is wrapped into the standard floating environment.}
 
 \label{fig2} % \label works only AFTER \caption within figure environment
 
@@ -172,12 +174,12 @@ The standard floating figures in \LaTeX do not cope well with page breaks which 
 \vspace{.5cm} % set vertical space between text and figure
 \begin{adjustwidth}{-2in}{0in}
 \begin{flushright}
-\includegraphics[width=163mm]{fig4.pdf}
+\includegraphics[width=163mm]{fig3.pdf}
 \end{flushright}
 \justify 
 \color{Gray}
 \textbf {Figure 3. Example of a wide figure with multi-page caption.}
-\textbf{A}, Proin lectus ex, venenatis vel ornare eget, hendrerit tempus justo. Pellentesque molestie purus sed pretium tincidunt. Curabitur facilisis, orci vitae mollis fringilla, elit erat fermentum justo, nec luctus nunc sapien vel dolor. Cras enim justo, ullamcorper ut commodo at, posuere et ex. Fusce cursus sapien id augue maximus convallis. Praesent egestas massa in enim volutpat varius. In aliquam turpis urna, at elementum turpis eleifend at. \textbf{B}, Proin risus erat, tincidunt quis massa non, sollicitudin congue metus. Aliquam quis magna vulputate, posuere est eu, tempor nisi. Cras gravida tempus felis, vitae lacinia lacus volutpat quis. Pellentesque et eros eu mi suscipit tempus. Proin in augue scelerisque. \textbf{C}, Donec a tempor tortor, et dignissim enim. Cras in ipsum sed velit bibendum imperdiet. Aenean aliquet mauris maximus, sodales ligula sit amet, placerat felis. In tristique nisi eu risus rutrum, ac lacinia lorem cursus. Nunc eget condimentum purus. Maecenas imperdiet nisl eu accumsan gravida. Nullam tincidunt, magna sed auctor ultrices, leo mi eleifend velit, quis varius ex diam non tellus. Nam tincidunt vehicula turpis, ut euismod turpis elementum vel.
+\textbf{A}, Proin lectus ex, venenatis vel ornare eget, hendrerit tempus justo. Pellentesque molestie purus sed pretium tincidunt. Curabitur facilisis, orci vitae mollis fringilla, elit erat fermentum justo, nec luctus nunc sapien vel dolor. Cras enim justo, ullamcorper ut commodo at, posuere et ex. Fusce cursus sapien id augue maximus convallis. Praesent egestas massa in enim volutpat varius. In aliquam turpis urna, at elementum turpis eleifend at. \textbf{B}, Proin risus erat, tincidunt quis massa non, sollicitudin congue metus. Aliquam quis magna vulputate, posuere est eu, tempor nisi. Cras gravida tempus felis, vitae lacinia lacus volutpat quis. Pellentesque et eros eu mi suscipit tempus. Proin in augue scelerisque. \textbf{C}, Donec a tempor tortor, et dignissim enim. Cras in ipsum sed velit bibendum imperdiet. Aenean aliquet mauris maximus, sodales ligula sit amet, placerat felis. In tristique nisi eu risus rutrum, ac lacinia lorem cursus. Nunc eget condimentum purus. Maecenas imperdiet nisl eu accumsan gravida. \textbf{D}, Nullam tincidunt, magna sed auctor ultrices, leo mi eleifend velit, quis varius ex diam non tellus. Nam tincidunt vehicula turpis, ut euismod turpis elementum vel.
 \end{adjustwidth}
 
 
@@ -192,7 +194,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam bibendum finibu
 %\clearpage
 
 \section*{Supporting Information}
-If you intend to keep supporting files separately you can do so and just provide figure legends here. Optionally make clicky links to the online file using \verb!\href{url}{description}!.
+If you intend to keep supporting files separately you can do so and just provide figure captions here. Optionally make clicky links to the online file using \verb!\href{url}{description}!.
 
 %These commands reset the figure counter and add "S" to the figure caption (e.g. "Figure S1"). This is in case you want to add actual figures and not just captions.
 \setcounter{figure}{0}
